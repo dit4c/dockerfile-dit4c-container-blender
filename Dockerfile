@@ -1,7 +1,9 @@
-FROM dit4c/dit4c-container-x11
+FROM dit4c/dit4c-container-x11:latest
 MAINTAINER Tim Dettrick <t.dettrick@uq.edu.au>
 
-RUN fsudo yum install -y mesa-libGLU bzip2
+USER root
+
+RUN yum install -y mesa-libGLU bzip2
 
 RUN BLENDER_VERSION=blender-2.75a-linux-glibc211-x86_64 && \
   curl -L -s http://mirror.cs.umn.edu/blender.org/release/Blender2.75/${BLENDER_VERSION}.tar.bz2 | tar xj -C /opt && \
